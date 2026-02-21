@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Item {{ item.id }}</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <a href="/">Back</a>
+    <h1>Item {{ item.id }}</h1>
+
+    <section class="card">
+      <dl>
+        <dt>URL</dt>
+        <dd><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></dd>
+        <dt>Type</dt>
+        <dd>{{ item.type }}</dd>
+        <dt>Status</dt>
+        <dd>{{ item.status }}</dd>
+        <dt>Title</dt>
+        <dd>{{ item.title }}</dd>
+        <dt>Domain</dt>
+        <dd>{{ item.source_domain }}</dd>
+        <dt>Video Allowed</dt>
+        <dd>{{ item.policy_video_download_allowed }}</dd>
+        <dt>Error</dt>
+        <dd>{{ item.error_message }}</dd>
+        <dt>Tags</dt>
+        <dd>{{ item.tags | join(', ') }}</dd>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h2>Assets</h2>
+      <ul>
+        {% for asset in item.assets %}
+          <li>
+            <strong>{{ asset.kind }}</strong> -
+            <a href="/files/{{ asset.id }}">{{ asset.path }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Saved HTML</h2>
+      {% for asset in item.assets %}
+        {% if asset.kind == "html" %}
+          <a class="button" href="/files/{{ asset.id }}" target="_blank">Open HTML</a>
+        {% endif %}
+      {% endfor %}
+    </section>
+  </main>
+</body>
+</html>

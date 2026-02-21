@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Archive MVP</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Personal Archive</h1>
+
+    <section class="card">
+      <h2>Add URL</h2>
+      <form id="add-form">
+        <label>
+          URL
+          <input type="url" name="url" required placeholder="https://example.com/article" />
+        </label>
+        <label>
+          Tags (comma separated)
+          <input type="text" name="tags" placeholder="news, research" />
+        </label>
+        <button type="submit">Archive</button>
+      </form>
+      <p id="add-status" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>Search</h2>
+      <div class="row">
+        <input id="query" type="text" placeholder="query" />
+        <input id="tag" type="text" placeholder="tag" />
+        <button id="search">Search</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Recent Items</h2>
+      <div id="items"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
